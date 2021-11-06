@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../database/db');
+const { Events } = require('./Event.model');
 
 const User = sequelize.define('users', {
 
@@ -24,7 +25,13 @@ const User = sequelize.define('users', {
         type: DataTypes.TINYINT,
         defaultValue: true
     }
+
 });
+
+User.hasMany(Events, {
+  foreignKey: 'userUserId'
+});
+Events.belongsTo(User);
 
 module.exports = {
   User

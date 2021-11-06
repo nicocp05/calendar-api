@@ -17,7 +17,7 @@ app.use(express.json());
 connection();
 
 // Routes
-app.use('/auth', require('./src/routes/auth.route'));
+app.use('/', require('./src/routes/index.route'));
 
 // Listen
 app.listen(port, () => {

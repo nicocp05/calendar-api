@@ -9,6 +9,7 @@ const newUser = async (req = request, res = response) => {
 
     try {
 
+        // Check user
         const user = await User.findOne({
             where: {
                 name
@@ -22,11 +23,13 @@ const newUser = async (req = request, res = response) => {
             });
         }
 
+        // Encrypt password
         const salt = bcrypt.genSaltSync();
         const cryptPassword = bcrypt.hashSync( password, salt );
 
         const userCreated = await User.create({ name, password: cryptPassword });
 
+        //Generate Token
         const token = await generateJWT( userCreated.userId, userCreated.name );
 
         res.json({
@@ -66,6 +69,7 @@ const login = async (req = request, res = response) => {
             });
         } 
 
+        // Compare password
         const validPassword = bcrypt.compareSync( password, user.password );
 
         if( !validPassword ) {
@@ -75,11 +79,12 @@ const login = async (req = request, res = response) => {
             });
         }
 
+        // Generate Token
         const token = await generateJWT( user.userId, user.name );
 
         res.json({
             ok: true,
-            msg: 'todo bien',
+            msg: 'User login',
             name: user.name,
             token
         });
@@ -97,7 +102,22 @@ const login = async (req = request, res = response) => {
 
 }
 
+const tokenRevalidate = async ( req, res = response ) => {
+
+    const { userId, name } = req;
+
+    const token = await generateJWT( userId, name );
+
+    res.json({
+        ok: true,
+        msg: 'revalidar token',
+        token
+    });
+
+}
+
 module.exports = {
     newUser,
-    login
+    login,
+    tokenRevalidate
 }
