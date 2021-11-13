@@ -86,6 +86,7 @@ const login = async (req = request, res = response) => {
             ok: true,
             msg: 'User login',
             name: user.name,
+            id: user.userId,
             token
         });
         
