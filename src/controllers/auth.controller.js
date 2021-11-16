@@ -102,15 +102,26 @@ const tokenRevalidate = async ( req, res = response ) => {
 
     const { userId, name } = req;
 
-    const token = await generateJWT( userId, name );
+    console.log(res);
 
-    res.json({
-        ok: true,
-        msg: 'revalidar token',
-        token,
-        id: user.userId,
-        name
-    });
+    try {
+
+        const token = await generateJWT( userId, name );
+
+        res.json({
+            ok: true,
+            msg: 'Revalidar token',
+            token,
+            id: userId,
+            name
+        });
+        
+    } catch (error) {
+        res.json({
+            ok: false,
+            msg: 'Error al revalidar token'
+        });
+    }
 
 }
 
