@@ -108,7 +108,7 @@ const tokenRevalidate = async ( req, res = response ) => {
         ok: true,
         msg: 'revalidar token',
         token,
-        userId,
+        id: user.userId,
         name
     });
 
