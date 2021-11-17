@@ -8,7 +8,7 @@ const getEvent = async ( req, res = response ) => {
 
     res.json({
         ok: true,
-        msg: 'getEvent',
+        msg: 'Eventos obtenidos',
         events
     });
 
@@ -34,7 +34,7 @@ const postEvent = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msg: 'Event created',
+            msg: 'Evento creado',
             eventCreated
         });
 
@@ -42,7 +42,7 @@ const postEvent = async ( req, res = response ) => {
         console.log(error);
         res.json({
             ok: false,
-            msg: 'Event not created'
+            msg: 'Evento no creado'
         });
     }
 
@@ -61,7 +61,7 @@ const putEvent = async ( req, res = response ) => {
         if(!event) {
             return res.json({
                 ok: false,
-                msg: 'Event not found'
+                msg: 'Evento no encontrado'
             });
         }
 
@@ -69,7 +69,7 @@ const putEvent = async ( req, res = response ) => {
 
             return res.json({
                 ok: false,
-                msg: 'Unauthorized user'
+                msg: 'Usuario no autorizado'
             }); 
 
         }
@@ -87,14 +87,14 @@ const putEvent = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msg: 'Event updated',
+            msg: 'Evento actualizado',
             newEvent
         });
         
     } catch (error) {
         res.json({
             ok: false,
-            msg: 'Event not updated'
+            msg: 'Evento no actualizado'
         });
     }
 
@@ -113,7 +113,7 @@ const deleteEvent = async ( req, res = response ) => {
         if(!event) {
             return res.json({
                 ok: false,
-                msg: 'Event not found'
+                msg: 'Evento no encontrado'
             });
         }
 
@@ -121,7 +121,7 @@ const deleteEvent = async ( req, res = response ) => {
 
             return res.json({
                 ok: false,
-                msg: 'Unauthorized user'
+                msg: 'Usuario no autorizado'
             }); 
 
         }
@@ -134,13 +134,13 @@ const deleteEvent = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msg: 'Event deleted'
+            msg: 'Evento eliminado'
         });
         
     } catch (error) {
         res.json({
             ok: false,
-            msg: 'Event not deleted'
+            msg: 'Evento no eliminado'
         });
     }
 

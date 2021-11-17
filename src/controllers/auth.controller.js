@@ -18,7 +18,7 @@ const newUser = async (req = request, res = response) => {
         if( user ) {
             return res.json({
                 ok: false,
-                msg: 'The user already exists'
+                msg: 'El usuario ya existe'
             });
         }
 
@@ -31,7 +31,7 @@ const newUser = async (req = request, res = response) => {
 
         res.json({
             ok: true,
-            msg: 'User created',
+            msg: 'Usuario creado',
             userCreated,
             token
         });
@@ -40,7 +40,7 @@ const newUser = async (req = request, res = response) => {
 
         res.json({
             ok: false,
-            msg: 'Error when creating user'
+            msg: 'Error al crear usuario'
         });
 
     }
@@ -62,7 +62,7 @@ const login = async (req = request, res = response) => {
         if( !user ) {
             return res.json({
                 ok: false,
-                msg: 'User does not exist'
+                msg: 'El usuario no existe'
             });
         } 
 
@@ -71,7 +71,7 @@ const login = async (req = request, res = response) => {
         if( !validPassword ) {
             return res.json({
                 ok: false,
-                msg: 'Invalid password'
+                msg: 'Contraseña incorrecta'
             });
         }
 
@@ -79,7 +79,7 @@ const login = async (req = request, res = response) => {
 
         res.json({
             ok: true,
-            msg: 'User login',
+            msg: 'Inicio de sesión exitoso',
             name: user.name,
             id: user.userId,
             token
@@ -91,7 +91,7 @@ const login = async (req = request, res = response) => {
 
         res.json({
             ok: false,
-            msg: 'Error when creating user'
+            msg: 'Error al crear usuario'
         });
 
     }
@@ -110,7 +110,7 @@ const tokenRevalidate = async ( req, res = response ) => {
 
         res.json({
             ok: true,
-            msg: 'Revalidar token',
+            msg: 'Token revalidado',
             token,
             id: userId,
             name
